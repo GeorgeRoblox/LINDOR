@@ -96,8 +96,7 @@ local Library = {
     DisabledTextColor = Color3.fromRGB(142, 142, 142);
 
     RiskColor = Color3.fromRGB(255, 50, 50);
-	OpColor = Color3.fromRGB(255, 255, 0);
-			
+
     Black = Color3.new(0, 0, 0);
     Font = Enum.Font.Code,
 
@@ -866,7 +865,7 @@ function Library:Unload()
 
     ScreenGui:Destroy()
     Library.Unloaded = true
-    getgenv().LINDOR = nil
+    getgenv().Linoria = nil
 end
 
 function Library:OnUnload(Callback)
@@ -3368,7 +3367,6 @@ do
             Visible = if typeof(Info.Visible) == "boolean" then Info.Visible else true;
             Disabled = if typeof(Info.Disabled) == "boolean" then Info.Disabled else false;
             Risky = if typeof(Info.Risky) == "boolean" then Info.Risky else false;
-			 Op = if typeof(Info.Op) == "boolean" then Info.Op else false;
             OriginalText = Info.Text; Text = Info.Text;
 
             Callback = Info.Callback or function(Value) end;
@@ -3490,17 +3488,6 @@ do
             Library.RegistryMap[ToggleLabel].Properties.TextColor3 = Toggle.Risky and 'RiskColor' or nil;
         end;
 
-	ToggleLabel.TextColor3 = Toggle.Op and Library.OpColor or Color3.new(1, 1, 1);
-
-ToggleInner.BackgroundColor3 = Toggle.Value and Library.AccentColor or Library.MainColor;
-ToggleInner.BorderColor3 = Toggle.Value and Library.AccentColorDark or Library.OutlineColor;
-
-Library.RegistryMap[ToggleInner].Properties.BackgroundColor3 = Toggle.Value and 'AccentColor' or 'MainColor';
-Library.RegistryMap[ToggleInner].Properties.BorderColor3 = Toggle.Value and 'AccentColorDark' or 'OutlineColor';
-
-Library.RegistryMap[ToggleLabel].Properties.TextColor3 = Toggle.Op and 'OpColor' or nil;
-end;
-
         function Toggle:OnChanged(Func)
             Toggle.Changed = Func;
 
@@ -3585,13 +3572,6 @@ end;
             Library:AddToRegistry(ToggleLabel, { TextColor3 = 'RiskColor' })
         end
 
-        if Toggle.Op == true then
-            Library:RemoveFromRegistry(ToggleLabel)
-
-            ToggleLabel.TextColor3 = Library.OpColor
-            Library:AddToRegistry(ToggleLabel, { TextColor3 = 'OpColor' })
-        end
-			
         Toggle:Display();
         Blank = Groupbox:AddBlank(Info.BlankSize or 5 + 2, Toggle.Visible);
         Groupbox:Resize();
@@ -6485,8 +6465,8 @@ function Library:CreateWindow(...)
                     
                     
                     local OldMouseIconState = InputService.MouseIconEnabled
-                    pcall(function() RunService:UnbindFromRenderStep("LINDORCursor") end)
-                    RunService:BindToRenderStep("LINDORCursor", Enum.RenderPriority.Camera.Value - 1, function()
+                    pcall(function() RunService:UnbindFromRenderStep("LinoriaCursor") end)
+                    RunService:BindToRenderStep("LinoriaCursor", Enum.RenderPriority.Camera.Value - 1, function()
                         InputService.MouseIconEnabled = not Library.ShowCustomCursor
                         local mPos = InputService:GetMouseLocation()
                         local X, Y = mPos.X, mPos.Y
@@ -6495,7 +6475,7 @@ function Library:CreateWindow(...)
                         if not Toggled or (not ScreenGui or not ScreenGui.Parent) then
                             InputService.MouseIconEnabled = OldMouseIconState
                          
-                            RunService:UnbindFromRenderStep("LINDORCursor")
+                            RunService:UnbindFromRenderStep("LinoriaCursor")
                         end
                     end)
                 end));
@@ -6748,6 +6728,6 @@ Library:GiveSignal(Players.PlayerRemoving:Connect(OnPlayerChange));
 Library:GiveSignal(Teams.ChildAdded:Connect(OnTeamChange));
 Library:GiveSignal(Teams.ChildRemoved:Connect(OnTeamChange));
 
-getgenv().LINDOR = Library;
-if getgenv().skip_getgenv_LINDOR ~= true then getgenv().Library = Library end
+getgenv().Linoria = Library;
+if getgenv().skip_getgenv_linoria ~= true then getgenv().Library = Library end
 return Library
