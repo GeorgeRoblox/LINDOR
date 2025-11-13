@@ -96,7 +96,7 @@ local Library = {
     DisabledTextColor = Color3.fromRGB(142, 142, 142);
 
     RiskColor = Color3.fromRGB(255, 50, 50);
-
+	OpColor = Color3.fromRGB(255, 255, 0);
 			
     Black = Color3.new(0, 0, 0);
     Font = Enum.Font.Code,
@@ -3368,6 +3368,7 @@ do
             Visible = if typeof(Info.Visible) == "boolean" then Info.Visible else true;
             Disabled = if typeof(Info.Disabled) == "boolean" then Info.Disabled else false;
             Risky = if typeof(Info.Risky) == "boolean" then Info.Risky else false;
+			 Op = if typeof(Info.Op) == "boolean" then Info.Op else false;
             OriginalText = Info.Text; Text = Info.Text;
 
             Callback = Info.Callback or function(Value) end;
@@ -3489,6 +3490,17 @@ do
             Library.RegistryMap[ToggleLabel].Properties.TextColor3 = Toggle.Risky and 'RiskColor' or nil;
         end;
 
+	ToggleLabel.TextColor3 = Toggle.Op and Library.OpColor or Color3.new(1, 1, 1);
+
+ToggleInner.BackgroundColor3 = Toggle.Value and Library.AccentColor or Library.MainColor;
+ToggleInner.BorderColor3 = Toggle.Value and Library.AccentColorDark or Library.OutlineColor;
+
+Library.RegistryMap[ToggleInner].Properties.BackgroundColor3 = Toggle.Value and 'AccentColor' or 'MainColor';
+Library.RegistryMap[ToggleInner].Properties.BorderColor3 = Toggle.Value and 'AccentColorDark' or 'OutlineColor';
+
+Library.RegistryMap[ToggleLabel].Properties.TextColor3 = Toggle.Op and 'OpColor' or nil;
+end;
+
         function Toggle:OnChanged(Func)
             Toggle.Changed = Func;
 
@@ -3571,6 +3583,13 @@ do
 
             ToggleLabel.TextColor3 = Library.RiskColor
             Library:AddToRegistry(ToggleLabel, { TextColor3 = 'RiskColor' })
+        end
+
+        if Toggle.Op == true then
+            Library:RemoveFromRegistry(ToggleLabel)
+
+            ToggleLabel.TextColor3 = Library.OpColor
+            Library:AddToRegistry(ToggleLabel, { TextColor3 = 'OpColor' })
         end
 			
         Toggle:Display();
