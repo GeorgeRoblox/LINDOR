@@ -27,7 +27,7 @@ if copyfunction and isfolder then -- fix for mobile executors :/
 end
 
 local SaveManager = {} do
-	SaveManager.Folder = 'LinoriaLibSettings'
+	SaveManager.Folder = 'LINDORbSettings'
 	SaveManager.Ignore = {}
 	SaveManager.Parser = {
 		Toggle = {
