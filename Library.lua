@@ -6731,4 +6731,3 @@ Library:GiveSignal(Teams.ChildRemoved:Connect(OnTeamChange));
 getgenv().Linoria = Library;
 if getgenv().skip_getgenv_linoria ~= true then getgenv().Library = Library end
 return Library
--- remove when updating
