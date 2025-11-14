@@ -865,7 +865,7 @@ function Library:Unload()
 
     ScreenGui:Destroy()
     Library.Unloaded = true
-    getgenv().Linoria = nil
+    getgenv().LINDOR = nil
 end
 
 function Library:OnUnload(Callback)
@@ -6465,8 +6465,8 @@ function Library:CreateWindow(...)
                     
                     
                     local OldMouseIconState = InputService.MouseIconEnabled
-                    pcall(function() RunService:UnbindFromRenderStep("LinoriaCursor") end)
-                    RunService:BindToRenderStep("LinoriaCursor", Enum.RenderPriority.Camera.Value - 1, function()
+                    pcall(function() RunService:UnbindFromRenderStep("LINDORCursor") end)
+                    RunService:BindToRenderStep("LINDORCursor", Enum.RenderPriority.Camera.Value - 1, function()
                         InputService.MouseIconEnabled = not Library.ShowCustomCursor
                         local mPos = InputService:GetMouseLocation()
                         local X, Y = mPos.X, mPos.Y
@@ -6475,7 +6475,7 @@ function Library:CreateWindow(...)
                         if not Toggled or (not ScreenGui or not ScreenGui.Parent) then
                             InputService.MouseIconEnabled = OldMouseIconState
                          
-                            RunService:UnbindFromRenderStep("LinoriaCursor")
+                            RunService:UnbindFromRenderStep("LINDORCursor")
                         end
                     end)
                 end));
@@ -6728,6 +6728,6 @@ Library:GiveSignal(Players.PlayerRemoving:Connect(OnPlayerChange));
 Library:GiveSignal(Teams.ChildAdded:Connect(OnTeamChange));
 Library:GiveSignal(Teams.ChildRemoved:Connect(OnTeamChange));
 
-getgenv().Linoria = Library;
-if getgenv().skip_getgenv_linoria ~= true then getgenv().Library = Library end
+getgenv().LINDOR = Library;
+if getgenv().skip_getgenv_LINDOR ~= true then getgenv().Library = Library end
 return Library
