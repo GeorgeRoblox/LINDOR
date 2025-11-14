@@ -7,17 +7,20 @@ local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
 local ThemeManager = loadstring(game:HttpGet(repo .. 'addonsfolder/ThemeManager.lua'))()
 local SaveManager = loadstring(game:HttpGet(repo .. 'addonsfolder/SaveManager.lua'))()
 
-local Window = Library:CreateWindow({
-    -- Set Center to true if you want the menu to appear in the center
-    -- Set AutoShow to true if you want the menu to appear when it is created
-    -- Position and Size are also valid options here
-    -- but you do not need to define them unless you are changing them :)
+local Toggles = Library.Toggles
+local Options = Library.Options
 
-    Title = 'Example menu',
-    Center = true,
-    AutoShow = true,
-    TabPadding = 8,
-    MenuFadeTime = 0.2
+local Window = Library:CreateWindow({
+	-- Set Center to true if you want the menu to appear in the center
+	-- Set AutoShow to true if you want the menu to appear when it is created
+	-- Position and Size are also valid options here
+	-- but you do not need to define them unless you are changing them :)
+
+	Title = 'Example menu',
+	Center = true,
+	AutoShow = true,
+	TabPadding = 8,
+	MenuFadeTime = 0.2
 })
 
 -- CALLBACK NOTE:
@@ -27,9 +30,9 @@ local Window = Library:CreateWindow({
 
 -- You do not have to set your tabs & groups up this way, just a prefrence.
 local Tabs = {
-    -- Creates a new tab titled Main
-    Main = Window:AddTab('Main'),
-    ['UI Settings'] = Window:AddTab('UI Settings'),
+	-- Creates a new tab titled Main
+	Main = Window:AddTab('Main'),
+	['UI Settings'] = Window:AddTab('UI Settings'),
 }
 
 -- Groupbox and Tabbox inherit the same functions
@@ -53,13 +56,13 @@ local Tab2 = TabBox:AddTab('Tab 2')
 -- Groupbox:AddToggle
 -- Arguments: Index, Options
 LeftGroupBox:AddToggle('MyToggle', {
-    Text = 'This is a toggle',
-    Default = true, -- Default value (true / false)
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the toggle
+	Text = 'This is a toggle',
+	Default = true, -- Default value (true / false)
+	Tooltip = 'This is a tooltip', -- Information shown when you hover over the toggle
 
-    Callback = function(Value)
-        print('[cb] MyToggle changed to:', Value)
-    end
+	Callback = function(Value)
+		print('[cb] MyToggle changed to:', Value)
+	end
 })
 
 
@@ -72,8 +75,8 @@ LeftGroupBox:AddToggle('MyToggle', {
 
 -- Calls the passed function when the toggle is updated
 Toggles.MyToggle:OnChanged(function()
-    -- here we get our toggle object & then get its value
-    print('MyToggle changed to:', Toggles.MyToggle.Value)
+	-- here we get our toggle object & then get its value
+	print('MyToggle changed to:', Toggles.MyToggle.Value)
 end)
 
 -- This should print to the console: "My toggle state changed! New value: false"
@@ -96,21 +99,21 @@ Toggles.MyToggle:SetValue(false)
 ]]
 
 local MyButton = LeftGroupBox:AddButton({
-    Text = 'Button',
-    Func = function()
-        print('You clicked a button!')
-    end,
-    DoubleClick = false,
-    Tooltip = 'This is the main button'
+	Text = 'Button',
+	Func = function()
+		print('You clicked a button!')
+	end,
+	DoubleClick = false,
+	Tooltip = 'This is the main button'
 })
 
 local MyButton2 = MyButton:AddButton({
-    Text = 'Sub button',
-    Func = function()
-        print('You clicked a sub button!')
-    end,
-    DoubleClick = true, -- You will have to click this button twice to trigger the callback
-    Tooltip = 'This is the sub button (double click me!)'
+	Text = 'Sub button',
+	Func = function()
+		print('You clicked a sub button!')
+	end,
+	DoubleClick = true, -- You will have to click this button twice to trigger the callback
+	Tooltip = 'This is the sub button (double click me!)'
 })
 
 --[[
@@ -155,16 +158,16 @@ LeftGroupBox:AddDivider()
     Compact will do the same thing
 ]]
 LeftGroupBox:AddSlider('MySlider', {
-    Text = 'This is my slider!',
-    Default = 0,
-    Min = 0,
-    Max = 5,
-    Rounding = 1,
-    Compact = false,
+	Text = 'This is my slider!',
+	Default = 0,
+	Min = 0,
+	Max = 5,
+	Rounding = 1,
+	Compact = false,
 
-    Callback = function(Value)
-        print('[cb] MySlider was changed! New value:', Value)
-    end
+	Callback = function(Value)
+		print('[cb] MySlider was changed! New value:', Value)
+	end
 })
 
 -- Options is a table added to getgenv() by the library
@@ -173,7 +176,7 @@ LeftGroupBox:AddSlider('MySlider', {
 
 local Number = Options.MySlider.Value
 Options.MySlider:OnChanged(function()
-    print('MySlider was changed! New value:', Options.MySlider.Value)
+	print('MySlider was changed! New value:', Options.MySlider.Value)
 end)
 
 -- This should print to the console: "MySlider was changed! New value: 3"
@@ -182,87 +185,87 @@ Options.MySlider:SetValue(3)
 -- Groupbox:AddInput
 -- Arguments: Idx, Info
 LeftGroupBox:AddInput('MyTextbox', {
-    Default = 'My textbox!',
-    Numeric = false, -- true / false, only allows numbers
-    Finished = false, -- true / false, only calls callback when you press enter
+	Default = 'My textbox!',
+	Numeric = false, -- true / false, only allows numbers
+	Finished = false, -- true / false, only calls callback when you press enter
 
-    Text = 'This is a textbox',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+	Text = 'This is a textbox',
+	Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
 
-    Placeholder = 'Placeholder text', -- placeholder text when the box is empty
-    -- MaxLength is also an option which is the max length of the text
+	Placeholder = 'Placeholder text', -- placeholder text when the box is empty
+	-- MaxLength is also an option which is the max length of the text
 
-    Callback = function(Value)
-        print('[cb] Text updated. New text:', Value)
-    end
+	Callback = function(Value)
+		print('[cb] Text updated. New text:', Value)
+	end
 })
 
 Options.MyTextbox:OnChanged(function()
-    print('Text updated. New text:', Options.MyTextbox.Value)
+	print('Text updated. New text:', Options.MyTextbox.Value)
 end)
 
 -- Groupbox:AddDropdown
 -- Arguments: Idx, Info
 
 LeftGroupBox:AddDropdown('MyDropdown', {
-    Values = { 'This', 'is', 'a', 'dropdown' },
-    Default = 1, -- number index of the value / string
-    Multi = false, -- true / false, allows multiple choices to be selected
+	Values = { 'This', 'is', 'a', 'dropdown' },
+	Default = 1, -- number index of the value / string
+	Multi = false, -- true / false, allows multiple choices to be selected
 
-    Text = 'A dropdown',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
+	Text = 'A dropdown',
+	Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
 
-    Callback = function(Value)
-        print('[cb] Dropdown got changed. New value:', Value)
-    end
+	Callback = function(Value)
+		print('[cb] Dropdown got changed. New value:', Value)
+	end
 })
 
 Options.MyDropdown:OnChanged(function()
-    print('Dropdown got changed. New value:', Options.MyDropdown.Value)
+	print('Dropdown got changed. New value:', Options.MyDropdown.Value)
 end)
 
 Options.MyDropdown:SetValue('This')
 
 -- Multi dropdowns
 LeftGroupBox:AddDropdown('MyMultiDropdown', {
-    -- Default is the numeric index (e.g. "This" would be 1 since it if first in the values list)
-    -- Default also accepts a string as well
+	-- Default is the numeric index (e.g. "This" would be 1 since it if first in the values list)
+	-- Default also accepts a string as well
 
-    -- Currently you can not set multiple values with a dropdown
+	-- Currently you can not set multiple values with a dropdown
 
-    Values = { 'This', 'is', 'a', 'dropdown' },
-    Default = 1,
-    Multi = true, -- true / false, allows multiple choices to be selected
+	Values = { 'This', 'is', 'a', 'dropdown' },
+	Default = 1,
+	Multi = true, -- true / false, allows multiple choices to be selected
 
-    Text = 'A dropdown',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
+	Text = 'A dropdown',
+	Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
 
-    Callback = function(Value)
-        print('[cb] Multi dropdown got changed:', Value)
-    end
+	Callback = function(Value)
+		print('[cb] Multi dropdown got changed:', Value)
+	end
 })
 
 Options.MyMultiDropdown:OnChanged(function()
-    -- print('Dropdown got changed. New value:', )
-    print('Multi dropdown got changed:')
-    for key, value in next, Options.MyMultiDropdown.Value do
-        print(key, value) -- should print something like This, true
-    end
+	-- print('Dropdown got changed. New value:', )
+	print('Multi dropdown got changed:')
+	for key, value in next, Options.MyMultiDropdown.Value do
+		print(key, value) -- should print something like This, true
+	end
 end)
 
 Options.MyMultiDropdown:SetValue({
-    This = true,
-    is = true,
+	This = true,
+	is = true,
 })
 
 LeftGroupBox:AddDropdown('MyPlayerDropdown', {
-    SpecialType = 'Player',
-    Text = 'A player dropdown',
-    Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
+	SpecialType = 'Player',
+	Text = 'A player dropdown',
+	Tooltip = 'This is a tooltip', -- Information shown when you hover over the dropdown
 
-    Callback = function(Value)
-        print('[cb] Player dropdown got changed:', Value)
-    end
+	Callback = function(Value)
+		print('[cb] Player dropdown got changed:', Value)
+	end
 })
 
 -- Label:AddColorPicker
@@ -271,18 +274,18 @@ LeftGroupBox:AddDropdown('MyPlayerDropdown', {
 -- You can also ColorPicker & KeyPicker to a Toggle as well
 
 LeftGroupBox:AddLabel('Color'):AddColorPicker('ColorPicker', {
-    Default = Color3.new(0, 1, 0), -- Bright green
-    Title = 'Some color', -- Optional. Allows you to have a custom color picker title (when you open it)
-    Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
+	Default = Color3.new(0, 1, 0), -- Bright green
+	Title = 'Some color', -- Optional. Allows you to have a custom color picker title (when you open it)
+	Transparency = 0, -- Optional. Enables transparency changing for this color picker (leave as nil to disable)
 
-    Callback = function(Value)
-        print('[cb] Color changed!', Value)
-    end
+	Callback = function(Value)
+		print('[cb] Color changed!', Value)
+	end
 })
 
 Options.ColorPicker:OnChanged(function()
-    print('Color changed!', Options.ColorPicker.Value)
-    print('Transparency changed!', Options.ColorPicker.Transparency)
+	print('Color changed!', Options.ColorPicker.Value)
+	print('Transparency changed!', Options.ColorPicker.Transparency)
 end)
 
 Options.ColorPicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
@@ -291,55 +294,55 @@ Options.ColorPicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
 -- Arguments: Idx, Info
 
 LeftGroupBox:AddLabel('Keybind'):AddKeyPicker('KeyPicker', {
-    -- SyncToggleState only works with toggles.
-    -- It allows you to make a keybind which has its state synced with its parent toggle
+	-- SyncToggleState only works with toggles.
+	-- It allows you to make a keybind which has its state synced with its parent toggle
 
-    -- Example: Keybind which you use to toggle flyhack, etc.
-    -- Changing the toggle disables the keybind state and toggling the keybind switches the toggle state
+	-- Example: Keybind which you use to toggle flyhack, etc.
+	-- Changing the toggle disables the keybind state and toggling the keybind switches the toggle state
 
-    Default = 'MB2', -- String as the name of the keybind (MB1, MB2 for mouse buttons)
-    SyncToggleState = false,
+	Default = 'MB2', -- String as the name of the keybind (MB1, MB2 for mouse buttons)
+	SyncToggleState = false,
 
 
-    -- You can define custom Modes but I have never had a use for it.
-    Mode = 'Toggle', -- Modes: Always, Toggle, Hold
+	-- You can define custom Modes but I have never had a use for it.
+	Mode = 'Toggle', -- Modes: Always, Toggle, Hold
 
-    Text = 'Auto lockpick safes', -- Text to display in the keybind menu
-    NoUI = false, -- Set to true if you want to hide from the Keybind menu,
+	Text = 'Auto lockpick safes', -- Text to display in the keybind menu
+	NoUI = false, -- Set to true if you want to hide from the Keybind menu,
 
-    -- Occurs when the keybind is clicked, Value is `true`/`false`
-    Callback = function(Value)
-        print('[cb] Keybind clicked!', Value)
-    end,
+	-- Occurs when the keybind is clicked, Value is `true`/`false`
+	Callback = function(Value)
+		print('[cb] Keybind clicked!', Value)
+	end,
 
-    -- Occurs when the keybind itself is changed, `New` is a KeyCode Enum OR a UserInputType Enum
-    ChangedCallback = function(New)
-        print('[cb] Keybind changed!', New)
-    end
+	-- Occurs when the keybind itself is changed, `New` is a KeyCode Enum OR a UserInputType Enum
+	ChangedCallback = function(New)
+		print('[cb] Keybind changed!', New)
+	end
 })
 
 -- OnClick is only fired when you press the keybind and the mode is Toggle
 -- Otherwise, you will have to use Keybind:GetState()
 Options.KeyPicker:OnClick(function()
-    print('Keybind clicked!', Options.KeyPicker:GetState())
+	print('Keybind clicked!', Options.KeyPicker:GetState())
 end)
 
 Options.KeyPicker:OnChanged(function()
-    print('Keybind changed!', Options.KeyPicker.Value)
+	print('Keybind changed!', Options.KeyPicker.Value)
 end)
 
 task.spawn(function()
-    while true do
-        wait(1)
+	while true do
+		wait(1)
 
-        -- example for checking if a keybind is being pressed
-        local state = Options.KeyPicker:GetState()
-        if state then
-            print('KeyPicker is being held down')
-        end
+		-- example for checking if a keybind is being pressed
+		local state = Options.KeyPicker:GetState()
+		if state then
+			print('KeyPicker is being held down')
+		end
 
-        if Library.Unloaded then break end
-    end
+		if Library.Unloaded then break end
+	end
 end)
 
 Options.KeyPicker:SetValue({ 'MB2', 'Toggle' }) -- Sets keybind to MB2, mode to Hold
@@ -373,11 +376,11 @@ SubDepbox:AddSlider('DepboxSlider', { Text = 'Slider', Default = 50, Min = 0, Ma
 SubDepbox:AddDropdown('DepboxDropdown', { Text = 'Dropdown', Default = 1, Values = {'a', 'b', 'c'} });
 
 Depbox:SetupDependencies({
-    { Toggles.ControlToggle, true } -- We can also pass `false` if we only want our features to show when the toggle is off!
+	{ Toggles.ControlToggle, true } -- We can also pass `false` if we only want our features to show when the toggle is off!
 });
 
 SubDepbox:SetupDependencies({
-    { Toggles.DepboxToggle, true }
+	{ Toggles.DepboxToggle, true }
 });
 
 -- Library functions
@@ -390,27 +393,27 @@ local FrameCounter = 0;
 local FPS = 60;
 
 local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(function()
-    FrameCounter += 1;
+	FrameCounter += 1;
 
-    if (tick() - FrameTimer) >= 1 then
-        FPS = FrameCounter;
-        FrameTimer = tick();
-        FrameCounter = 0;
-    end;
+	if (tick() - FrameTimer) >= 1 then
+		FPS = FrameCounter;
+		FrameTimer = tick();
+		FrameCounter = 0;
+	end;
 
-    Library:SetWatermark(('LinoriaLib demo | %s fps | %s ms'):format(
-        math.floor(FPS),
-        math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
-    ));
+	Library:SetWatermark(('LidorUi - BlackKing | %s fps | %s ms'):format(
+		math.floor(FPS),
+		math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
+		));
 end);
 
 Library.KeybindFrame.Visible = true; -- todo: add a function for this
 
 Library:OnUnload(function()
-    WatermarkConnection:Disconnect()
+	WatermarkConnection:Disconnect()
 
-    print('Unloaded!')
-    Library.Unloaded = true
+	print('Unloaded!')
+	Library.Unloaded = true
 end)
 
 -- UI Settings
