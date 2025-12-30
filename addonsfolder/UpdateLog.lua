@@ -18,7 +18,7 @@ local LocalPlayer = Players.LocalPlayer
 	UpdateInfo:AddLabel(" + happy new year!!!!!! ")
 	UpdateInfo2:AddLabel(" - Removed Key System ! ")
 	
-	if LocalPlayer.Name == "Vuticlk" then
+	if LocalPlayer.Name == "yeahidkabtthis" then
 		local UpdateInfo3 = Tab:AddLeftGroupbox("Nigga UpdateLog")
 		UpdateInfo3:AddLabel("+ Jack is a GOOD BOY 💔")
 	else
