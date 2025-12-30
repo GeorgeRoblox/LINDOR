@@ -10,6 +10,6 @@ return function(Tab)
 
 	local UpdateInfo = Tab:AddLeftGroupbox("UpdateLog")
 
-	UpdateInfo:AddLabel("Hello")
+	UpdateInfo:AddLabel("Jack Is a Good Boy")
 
 end
