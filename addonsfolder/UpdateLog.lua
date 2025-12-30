@@ -13,7 +13,6 @@ return function(Tab)
 	UpdateInfo:AddLabel(" + FIXED BUGS")
 	UpdateInfo:AddLabel(" + FIXED SOME TOGGLES NOT WORKING")
 	UpdateInfo:AddLabel(" + happy new year!!!!!! ")
-
-	
+	UpdateInfo:AddLabel(" - Removed Key System ! ")
 
 end
