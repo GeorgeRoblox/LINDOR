@@ -12,6 +12,7 @@ return function(Tab)
 	local LocalPlayer = Players.LocalPlayer
 	local UpdateInfo = Tab:AddLeftGroupbox("Added UpdateLog")
 	local UpdateInfo2 = Tab:AddRightGroupbox("Removed UpdateLog")
+	local UpdateInfo4 = Tab:AddLeftGroupbox("Buyers UpdateLog")
 	local UserInfo = Tab:AddLeftGroupbox("Player Info")
 
 	UpdateInfo:AddLabel("Doors:")
@@ -19,6 +20,7 @@ return function(Tab)
 	UpdateInfo:AddLabel(" + FIXED SOME TOGGLES NOT WORKING")
 	UpdateInfo:AddLabel(" + FIXED AUTO INTERACT")
 	UpdateInfo:AddLabel(" + happy new year!!!!!! ")
+	UpdateInfo4:AddLabel(" + Teleport to end (cringles workshop) ")
 	
 	
 	UpdateInfo2:AddLabel("Doors:")
