@@ -14,13 +14,14 @@ return function(Tab)
 	local UpdateInfo2 = Tab:AddRightGroupbox("Removed UpdateLog")
 	local UserInfo = Tab:AddLeftGroupbox("Player Info")
 
+	UpdateInfo:AddLabel("Doors:")
 	UpdateInfo:AddLabel(" + FIXED BUGS")
 	UpdateInfo:AddLabel(" + FIXED SOME TOGGLES NOT WORKING")
 	UpdateInfo:AddLabel(" + FIXED AUTO INTERACT")
 	UpdateInfo:AddLabel(" + happy new year!!!!!! ")
 	
 	
-	
+	UpdateInfo2:AddLabel("Doors:")
 	UpdateInfo2:AddLabel(" - Removed Key System ! ")
 	UpdateInfo2:AddLabel(" - Removed Can Slide Toggle ! ")
 	
