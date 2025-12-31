@@ -21,13 +21,13 @@ return function(Tab)
 	UpdateInfo:AddLabel(" + FIXED AUTO INTERACT")
 	UpdateInfo:AddLabel(" + happy new year!!!!!! ")
 	UpdateInfo4:AddLabel(" + Teleport to end (cringles workshop) ")
-	
-	
+
+
 	UpdateInfo2:AddLabel("Doors:")
 	UpdateInfo2:AddLabel(" - Removed Key System ! ")
 	UpdateInfo2:AddLabel(" - Removed Can Slide Toggle ! ")
-	
-	
+
+
 	local name, version = identifyexecutor()
 
 	if name then
@@ -52,9 +52,10 @@ return function(Tab)
 		Tooltip = 'Copies The Join Code.'
 	})
 
-	if LocalPlayer.Name == "Vuticlk" or LocalPlayer.Name == "yeahidkabtthis" then
-		local UpdateInfo3 = Tab:AddRightGroupbox("Nigga UpdateLog")
+	if LocalPlayer.Name == "Vuticlk" or LocalPlayer.Name == "yeahidkabtthis" or LocalPlayer.Name == "jacob_irish009" then
+		local UpdateInfo3 = Tab:AddRightGroupbox("Clown UpdateLog 🤡")
 		UpdateInfo3:AddLabel("+ Jack is a GOOD BOY 💔")
+		UpdateInfo3:AddLabel("+ Jacob is a GOOD BOY 💔")
 		UpdateInfo3:AddLabel("+ Jacob is MARRIED TO DARK ")
 		UpdateInfo3:AddLabel("+ Jacob is better than jack 👌 ")
 	else
