@@ -1,3 +1,4 @@
+
 return function(Tab)
 	local Global = getgenv()
 	local CloneReference = function(Object)
@@ -11,30 +12,32 @@ return function(Tab)
 	local Players = game:GetService("Players")
 	local LocalPlayer = Players.LocalPlayer
 
-local VisionTab = FloorTab.FloorTabs:AddRightTabbox()
+	local VisionTab = FloorTab.FloorTabs:AddRightTabbox()
 	local CringlesWorkShop = VisionTab:AddTab('Cringles WorkShop')
-	
-	CringlesWorkShop:AddButton({
-		Text = 'Teleport To End',
-		Func = function()
-			if Floor == "Ripple" then
-			local door = workspace.CurrentRooms["2"].RippleExitDoor
-			local doorCF = door:GetPivot()
 
-			local offset = doorCF.LookVector * 2
-			local finalCF = doorCF + offset
+	if LocalPlayer.Name == "Roblox" then
+		CringlesWorkShop:AddButton({
+			Text = 'Teleport To End',
+			Func = function()
+				if Floor == "Ripple" then
+					local door = workspace.CurrentRooms["2"].RippleExitDoor
+					local doorCF = door:GetPivot()
 
-			local player = game.Players.LocalPlayer
-			local char = player.Character or player.CharacterAdded:Wait()
-			local hrp = char:WaitForChild("HumanoidRootPart")
+					local offset = doorCF.LookVector * 2
+					local finalCF = doorCF + offset
 
-			hrp.CFrame = CFrame.new(finalCF.Position, doorCF.Position)
-			Notify('Teleported...')
-			else
-				return
-			end
-		end,
-		DoubleClick = (true),
-		Tooltip = 'Makes You Teleport To The End Also Dont Forget You Need To Be in The Room 1.'
-	})
-end
+					local player = game.Players.LocalPlayer
+					local char = player.Character or player.CharacterAdded:Wait()
+					local hrp = char:WaitForChild("HumanoidRootPart")
+
+					hrp.CFrame = CFrame.new(finalCF.Position, doorCF.Position)
+					Notify('Teleported...')
+				else
+					return
+				end
+			end,
+			DoubleClick = (true),
+			Tooltip = 'Makes You Teleport To The End Also Dont Forget You Need To Be in The Room 1.'
+		})
+		end
+	end
