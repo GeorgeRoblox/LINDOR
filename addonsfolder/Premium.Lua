@@ -18,7 +18,7 @@ return function(Tab)
 		CWPREMIUM:AddButton({
 			Text = 'Teleport To End',
 			Func = function()
-				if Floor == "Ripple" then
+				
 					local door = workspace.CurrentRooms["2"].RippleExitDoor
 					local doorCF = door:GetPivot()
 
@@ -31,9 +31,7 @@ return function(Tab)
 
 					hrp.CFrame = CFrame.new(finalCF.Position, doorCF.Position)
 					Notify('Teleported...')
-				else
-					return
-				end
+
 			end,
 			DoubleClick = (true),
 			Tooltip = 'Makes You Teleport To The End Also Dont Forget You Need To Be in The Room 1.'
