@@ -16,11 +16,13 @@ return function(Tab)
 
 	UpdateInfo:AddLabel(" + FIXED BUGS")
 	UpdateInfo:AddLabel(" + FIXED SOME TOGGLES NOT WORKING")
+	UpdateInfo:AddLabel(" + FIXED AUTO INTERACT")
 	UpdateInfo:AddLabel(" + happy new year!!!!!! ")
 	
 	
 	
 	UpdateInfo2:AddLabel(" - Removed Key System ! ")
+	UpdateInfo2:AddLabel(" - Removed Can Slide Toggle ! ")
 	
 	
 	local name, version = identifyexecutor()
