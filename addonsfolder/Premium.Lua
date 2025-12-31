@@ -12,11 +12,10 @@ return function(Tab)
 	local Players = game:GetService("Players")
 	local LocalPlayer = Players.LocalPlayer
 
-	local VisionTab = PremiumTab.Premiums:AddRightTabbox()
-	local CringlesWorkShop = VisionTab:AddTab('Cringles WorkShop')
+	local CWPREMIUM = Tab:AddLeftGroupbox("Cringles WorkShop")
 
 	if LocalPlayer.Name == "Roblox" then
-		CringlesWorkShop:AddButton({
+		CWPREMIUM:AddButton({
 			Text = 'Teleport To End',
 			Func = function()
 				if Floor == "Ripple" then
