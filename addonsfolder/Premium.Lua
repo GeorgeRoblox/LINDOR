@@ -14,7 +14,7 @@ return function(Tab)
 
 	local CWPREMIUM = Tab:AddLeftGroupbox("Cringles WorkShop")
 
-	if LocalPlayer.Name == "Roblox" then
+	if LocalPlayer.Name == "yeahidkabtthis" then
 		CWPREMIUM:AddButton({
 			Text = 'Teleport To End',
 			Func = function()
