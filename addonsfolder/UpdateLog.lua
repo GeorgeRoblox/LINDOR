@@ -52,7 +52,8 @@ return function(Tab)
 	if LocalPlayer.Name == "Vuticlk" or LocalPlayer.Name == "yeahidkabtthis" then
 		local UpdateInfo3 = Tab:AddRightGroupbox("Nigga UpdateLog")
 		UpdateInfo3:AddLabel("+ Jack is a GOOD BOY 💔")
-			UpdateInfo3:AddLabel("+ Jacob is MARRIED TO DARK ")
+		UpdateInfo3:AddLabel("+ Jacob is MARRIED TO DARK ")
+		UpdateInfo3:AddLabel("+ Jacob is better than jack 👌 ")
 	else
 		return
 	end
