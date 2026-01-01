@@ -36,5 +36,52 @@ return function(Tab)
 			DoubleClick = (true),
 			Tooltip = 'Makes You Teleport To The End Also Dont Forget You Need To Be in The Room 1.'
 		})
-		end
+	end
+	
+	local LOBBYPREMIUM = Tab:AddLeftGroupbox("Lobby")
+	
+	if LocalPlayer.Name == "yeahidkabtthis" or LocalPlayer.Name == "DontRun0_00" or LocalPlayer.Name == "jacob_irish009" or LocalPlayer.Name == "Timmynotpog" or LocalPlayer.Name == "ILIKEBEINGNORMAL7" then
+		CodesList = {
+			"67",
+			"54",
+			"41",
+			"CHEDDAR BALLS",
+			"XQC",
+			"PENGUINZ0",
+			"KREEKCRAFT",
+			"ISHOWSPEED",
+			"DANTDM",
+			"KUBZ SCOUTS",
+			"FIND THE TROLLFACES",
+			"THINKNOODLES",
+			"W",
+			"RAGDOLL UNIVERSE",
+			"RAGDOLL MAYHEM",
+			"BIJUU MIKE",
+			"8BITRYAN",
+			"SCREECHSUCKS",
+			"LORE",
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+			"FIND THE TROLLFACES",
+			"3rd",
+			"LAZYDEVS",
+			"RAGDOLL COMBAT",
+			"VOCAB HAVOC",
+			"PATHSWAP",
+			"JUMP OVER THE BRICK"
+		}
+
+		LOBBYPREMIUM:AddButton{
+			Text = 'Redeem Codes',
+			DoubleClick = false,
+			Tooltip = 'Redeems all currently active codes in the game',
+			Func = function()
+				for i,ShopCode in pairs(CodesList) do
+					RemotesFolder.ShopCode:FireServer(ShopCode)
+					task.wait(1.1)
+				end
+			end
+		}
+	end
+	
 	end
