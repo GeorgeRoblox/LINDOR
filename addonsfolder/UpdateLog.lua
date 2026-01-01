@@ -14,7 +14,6 @@ return function(Tab)
 	local UpdateInfo2 = Tab:AddRightGroupbox("Removed UpdateLog")
 	local UpdateInfo4 = Tab:AddLeftGroupbox("Buyers UpdateLog")
 	local UserInfo = Tab:AddLeftGroupbox("Player Info")
-	local Contributors = Tab:AddLeftGroupbox("Contributors")
 
 	UpdateInfo:AddLabel("Doors:")
 	UpdateInfo:AddLabel(" + Lobby Support")
@@ -62,6 +61,6 @@ return function(Tab)
 	end
 
 	local Contributors = Tab:AddLeftGroupbox("Contributors")
-	Contributors:AddLabel("Jacob - ")
+	Contributors:AddLabel("Jacob - Esp Library, Fly,etc.")
 
 end
