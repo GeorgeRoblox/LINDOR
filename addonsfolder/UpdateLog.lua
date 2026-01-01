@@ -14,19 +14,18 @@ return function(Tab)
 	local UpdateInfo2 = Tab:AddRightGroupbox("Removed UpdateLog")
 	local UpdateInfo4 = Tab:AddLeftGroupbox("Buyers UpdateLog")
 	local UserInfo = Tab:AddLeftGroupbox("Player Info")
+	local Contributors = Tab:AddLeftGroupbox("Contributors")
 
 	UpdateInfo:AddLabel("Doors:")
-	UpdateInfo:AddLabel(" + FIXED BUGS")
-	UpdateInfo:AddLabel(" + FIXED SOME TOGGLES NOT WORKING")
-	UpdateInfo:AddLabel(" + FIXED AUTO INTERACT")
-	UpdateInfo:AddLabel(" + happy new year!!!!!! ")
-	UpdateInfo4:AddLabel(" + Teleport to end (cringles workshop) ")
-
+	UpdateInfo:AddLabel(" + Lobby Support")
+	UpdateInfo:AddLabel(" much more")
 
 	UpdateInfo2:AddLabel("Doors:")
-	UpdateInfo2:AddLabel(" - Removed Key System ! ")
-	UpdateInfo2:AddLabel(" - Removed Can Slide Toggle ! ")
+	UpdateInfo2:AddLabel(" - Nothing Removed :)")
 
+
+	UpdateInfo4:AddLabel("Doors:")
+	UpdateInfo4:AddLabel("Reedem All Codes")
 
 	local name, version = identifyexecutor()
 
@@ -61,5 +60,8 @@ return function(Tab)
 	else
 		return
 	end
+
+	local Contributors = Tab:AddLeftGroupbox("Contributors")
+	Contributors:AddLabel("Jacob - ")
 
 end
