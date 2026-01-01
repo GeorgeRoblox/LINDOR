@@ -77,7 +77,7 @@ return function(Tab)
 			Tooltip = 'Redeems all currently active codes in the game',
 			Func = function()
 				for i,ShopCode in pairs(CodesList) do
-					RemotesFolder.ShopCode:FireServer(ShopCode)
+					game:GetService("ReplicatedStorage").RemotesFolder.ShopCode:FireServer(ShopCode)
 					task.wait(1.1)
 				end
 			end
