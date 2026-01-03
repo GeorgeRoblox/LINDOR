@@ -16,15 +16,16 @@ return function(Tab)
 	local UserInfo = Tab:AddLeftGroupbox("Player Info")
 
 	UpdateInfo:AddLabel("Doors:")
-	UpdateInfo:AddLabel(" + Lobby Support")
-	UpdateInfo:AddLabel(" much more")
+	UpdateInfo:AddLabel(" + Daily Run Support")
+	UpdateInfo:AddLabel(" + fixed script not loading in game")
+	UpdateInfo:AddLabel(" + added anticheat bypass in floor tab for daily run")
 
 	UpdateInfo2:AddLabel("Doors:")
-	UpdateInfo2:AddLabel(" - Nothing Removed :)")
+	UpdateInfo2:AddLabel(" - nothing")
 
 
-	UpdateInfo4:AddLabel("Doors:")
-	UpdateInfo4:AddLabel("Reedem All Codes")
+	UpdateInfo4:AddLabel("Buyer Doors:")
+	UpdateInfo4:AddLabel("nothing added")
 
 	local name, version = identifyexecutor()
 
@@ -59,8 +60,5 @@ return function(Tab)
 	else
 		return
 	end
-
-	local Contributors = Tab:AddLeftGroupbox("Contributors")
-	Contributors:AddLabel("Jacob - Esp Library, Fly,etc.")
 
 end
