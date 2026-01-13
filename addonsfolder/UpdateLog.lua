@@ -15,17 +15,14 @@ return function(Tab)
 	local UpdateInfo4 = Tab:AddLeftGroupbox("Buyers UpdateLog")
 	local UserInfo = Tab:AddLeftGroupbox("Player Info")
 
-	UpdateInfo:AddLabel("Doors:")
-	UpdateInfo:AddLabel(" + Daily Run Support")
-	UpdateInfo:AddLabel(" + fixed script not loading in game")
-	UpdateInfo:AddLabel(" + added anticheat bypass in floor tab for daily run")
+	UpdateInfo:AddLabel("Eternal Night:")
+	UpdateInfo:AddLabel(" + New GameSupport")
 
-	UpdateInfo2:AddLabel("Doors:")
-	UpdateInfo2:AddLabel(" - nothing")
+	UpdateInfo2:AddLabel("Nothing")
 
 
-	UpdateInfo4:AddLabel("Buyer Doors:")
-	UpdateInfo4:AddLabel("nothing added")
+	UpdateInfo4:AddLabel("Nothing")
+
 
 	local name, version = identifyexecutor()
 
