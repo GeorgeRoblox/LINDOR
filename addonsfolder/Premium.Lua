@@ -1,27 +1,30 @@
 
+
+
 return function(Tab, HWID)
 
-    local AllowedHWID = "TESTHWID"
 
-    if HWID ~= AllowedHWID then
-        Tab:AddLabel("You do not have premium.")
-        return
-    end
+		local AllowedHWID = "TESTHWID"
 
-	local Global = getgenv()
-	local CloneReference = function(Object)
-		if cloneref and typeof(cloneref) == "function" then
-			return cloneref(Object)
-		else
-			return Object
+		if HWID ~= AllowedHWID then
+			Tab:AddLabel("You do not have premium.")
+			return
 		end
-	end
 
-	local Players = game:GetService("Players")
-	local LocalPlayer = Players.LocalPlayer
+		local Global = getgenv()
+		local CloneReference = function(Object)
+			if cloneref and typeof(cloneref) == "function" then
+				return cloneref(Object)
+			else
+				return Object
+			end
+		end
 
-		
-	local CWPREMIUM = Tab:AddLeftGroupbox("Cringles WorkShop")
+		local Players = game:GetService("Players")
+		local LocalPlayer = Players.LocalPlayer
+
+
+		local CWPREMIUM = Tab:AddLeftGroupbox("Cringles WorkShop")
 
 		CWPREMIUM:AddButton({
 			Text = 'Teleport To End',
@@ -46,7 +49,7 @@ return function(Tab, HWID)
 		})
 
 
-	local LOBBYPREMIUM = Tab:AddLeftGroupbox("Lobby")
+		local LOBBYPREMIUM = Tab:AddLeftGroupbox("Lobby")
 
 		CodesList = {
 			"67",
@@ -89,9 +92,9 @@ return function(Tab, HWID)
 				end
 			end
 		}
-	
-	local MM2PREM = Tab:AddLeftGroupbox("Murderer Mystery 2")
-	
+
+		local MM2PREM = Tab:AddLeftGroupbox("Murderer Mystery 2")
+
 
 		local RunService = game:GetService("RunService")
 
@@ -155,4 +158,4 @@ return function(Tab, HWID)
 			end
 		})
 
-end
+	end
