@@ -1,6 +1,13 @@
 
-return function(Tab)
-	if getgenv().hwid == "TESTHWID" then
+return function(Tab, HWID)
+
+    local AllowedHWID = "TESTHWID"
+
+    if HWID ~= AllowedHWID then
+        Tab:AddLabel("You do not have premium.")
+        return
+    end
+
 	local Global = getgenv()
 	local CloneReference = function(Object)
 		if cloneref and typeof(cloneref) == "function" then
