@@ -1,5 +1,6 @@
 
 return function(Tab)
+	if getgenv().hwid == "TESTHWID" then
 	local Global = getgenv()
 	local CloneReference = function(Object)
 		if cloneref and typeof(cloneref) == "function" then
@@ -12,7 +13,6 @@ return function(Tab)
 	local Players = game:GetService("Players")
 	local LocalPlayer = Players.LocalPlayer
 
-	if getgenv().hwid == "TESTHWID" then
 		
 	local CWPREMIUM = Tab:AddLeftGroupbox("Cringles WorkShop")
 
@@ -148,5 +148,4 @@ return function(Tab)
 			end
 		})
 
-end
 end
