@@ -12,35 +12,35 @@ return function(Tab)
 	local Players = game:GetService("Players")
 	local LocalPlayer = Players.LocalPlayer
 
+	if getgenv().hwid == "TESTHWID" then
+		
 	local CWPREMIUM = Tab:AddLeftGroupbox("Cringles WorkShop")
 
-	if LocalPlayer.Name == "yeahidkabtthis" or LocalPlayer.Name == "DontRun0_00" or LocalPlayer.Name == "jacob_irish009" or LocalPlayer.Name == "Timmynotpog" or LocalPlayer.Name == "ILIKEBEINGNORMAL7" then
 		CWPREMIUM:AddButton({
 			Text = 'Teleport To End',
 			Func = function()
-				
-					local door = workspace.CurrentRooms["2"].RippleExitDoor
-					local doorCF = door:GetPivot()
 
-					local offset = doorCF.LookVector * 2
-					local finalCF = doorCF + offset
+				local door = workspace.CurrentRooms["2"].RippleExitDoor
+				local doorCF = door:GetPivot()
 
-					local player = game.Players.LocalPlayer
-					local char = player.Character or player.CharacterAdded:Wait()
-					local hrp = char:WaitForChild("HumanoidRootPart")
+				local offset = doorCF.LookVector * 2
+				local finalCF = doorCF + offset
 
-					hrp.CFrame = CFrame.new(finalCF.Position, doorCF.Position)
-					Notify('Teleported...')
+				local player = game.Players.LocalPlayer
+				local char = player.Character or player.CharacterAdded:Wait()
+				local hrp = char:WaitForChild("HumanoidRootPart")
+
+				hrp.CFrame = CFrame.new(finalCF.Position, doorCF.Position)
+				Notify('Teleported...')
 
 			end,
 			DoubleClick = (true),
 			Tooltip = 'Makes You Teleport To The End Also Dont Forget You Need To Be in The Room 1.'
 		})
-	end
-	
+
+
 	local LOBBYPREMIUM = Tab:AddLeftGroupbox("Lobby")
-	
-	if LocalPlayer.Name == "yeahidkabtthis" or LocalPlayer.Name == "DontRun0_00" or LocalPlayer.Name == "jacob_irish009" or LocalPlayer.Name == "Timmynotpog" or LocalPlayer.Name == "ILIKEBEINGNORMAL7" then
+
 		CodesList = {
 			"67",
 			"54",
@@ -82,6 +82,71 @@ return function(Tab)
 				end
 			end
 		}
-	end
 	
-	end
+	local MM2PREM = Tab:AddLeftGroupbox("Murderer Mystery 2")
+	
+
+		local RunService = game:GetService("RunService")
+
+
+		local AutoFarmRunning = false
+		local AutoFarmConnection = nil
+
+		-- UI ELEMENTS (your exact code)
+		MM2PREM:AddSlider("AutoFarmSpeed", {
+			Text = 'Farm Speed ',
+			Default = 21,
+			Min = 18,
+			Max = 27,
+			Rounding = 0,
+			Compact = true
+		})
+
+		MM2PREM:AddDivider()
+
+		MM2PREM:AddToggle('AutoFarm', {
+			Text = 'Auto Farm',
+			Default = false,
+			Callback = function(state)
+				AutoFarmRunning = state
+
+				if state then
+					AutoFarmConnection = RunService.RenderStepped:Connect(function()
+						if not AutoFarmRunning then return end
+
+						local character = LocalPlayer.Character
+						if not character then return end
+
+						local root = character:FindFirstChild("HumanoidRootPart")
+						if not root then return end
+
+						local closest = nil
+						local closestDist = math.huge
+
+						-- Scan all workspace descendants for coins
+						for _, obj in ipairs(workspace:GetDescendants()) do
+							if obj.Name == "Coin_Server" and obj:IsA("BasePart") and obj:IsDescendantOf(workspace) then
+								local dist = (root.Position - obj.Position).Magnitude
+								if dist < closestDist then
+									closestDist = dist
+									closest = obj
+								end
+							end
+						end
+
+						if closest then
+							local speed = Options.AutoFarmSpeed.Value
+							root.CFrame = root.CFrame:Lerp(CFrame.new(closest.Position), speed / 100)
+						end
+					end)
+				else
+					if AutoFarmConnection then
+						AutoFarmConnection:Disconnect()
+						AutoFarmConnection = nil
+					end
+				end
+			end
+		})
+
+end
+end
