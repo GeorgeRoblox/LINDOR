@@ -77,6 +77,10 @@ local MainConnection = RunService.RenderStepped:Connect(function()
 	end
 end)
 
+local CameraConnection = Workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+    Camera = CloneReference(game:GetService("Workspace").CurrentCamera)
+end)
+
 function Fly:Enable()
 	Fly.Enabled = true
 end
@@ -97,4 +101,5 @@ function Fly:Unload()
 	Fly.Body:Destroy()
 	Fly.Gyro:Destroy()
 end
+
 return Fly
